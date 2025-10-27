@@ -3,16 +3,21 @@ package steps;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
-import io.restassured.response.Response;
 import services.AuthService;
 import utils.SchemaValidator;
+import steps.context.TestContext;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class AuthSteps {
-    AuthService authService = new AuthService();
-    private Response response;
+    private final AuthService authService;
+    private final TestContext testContext;
+
+    public AuthSteps(TestContext context) {
+        this.testContext = context;
+        this.authService = new AuthService();
+    }
 
     @Dado("que a API de contas está operacional")
     public void queAApiDeContasEstaOperacional() {
@@ -25,28 +30,28 @@ public class AuthSteps {
             String dynamicEmail = "teste" + System.currentTimeMillis() + "@exemplo.com";
             body = body.replace("email_dinamico", dynamicEmail);
         }
-        response = authService.post(endpoint, body);
+        testContext.response = authService.post(endpoint, body);
     }
 
     @Então("eu devo receber um status code {int}")
     public void euDevoReceberUmStatusCode(int statusCode) {
-        response.then().statusCode(statusCode);
+        testContext.response.then().statusCode(statusCode);
     }
 
     @Então("o corpo da resposta deve conter a mensagem {string}")
     public void oCorpoDaRespostaDeveConterAMensagem(String message) {
-        response.then().body(containsString(message));
+        testContext.response.then().body(containsString(message));
     }
 
     @Então("o corpo da resposta deve conter um {string}")
     public void oCorpoDaRespostaDeveConterUm(String key) {
-        response.then().body(key, notNullValue());
+        testContext.response.then().body(key, notNullValue());
     }
 
     @Então("o contrato da resposta deve ser válido para {string}")
     public void oContratoDaRespostaDeveSerValidoPara(String schemaName) {
         if (schemaName != null && !schemaName.isEmpty()) {
-            SchemaValidator.validateSchema(response, schemaName);
+            SchemaValidator.validateSchema(testContext.response, schemaName);
         }
     }
 

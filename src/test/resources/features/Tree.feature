@@ -20,6 +20,7 @@ Funcionalidade: Gerenciamento de Árvores
     Então o status da resposta deve ser 201
     E a resposta deve conter a mensagem "Árvore criada com sucesso"
     E a resposta deve conter o campo "success" com valor "true"
+    E o contrato da resposta deve ser válido para "arvore-criada-schema.json"
 
   Cenário: Tentativa de criação de árvore com campos obrigatórios vazios (Caminho de Falha)
     Dado que o usuário informa dados incompletos para uma nova árvore:
@@ -33,6 +34,7 @@ Funcionalidade: Gerenciamento de Árvores
     Então o status da resposta deve ser 400
     E a resposta deve conter a mensagem "Preencha todos os campos"
     E a resposta deve conter o campo "success" com valor "false"
+    E o contrato da resposta deve ser válido para "arvore-erro-criacao-schema.json"
 
   # ----------------------------------------------------
   # Cenários de Busca por ID (GET /arvore/search/{id})
@@ -42,15 +44,18 @@ Funcionalidade: Gerenciamento de Árvores
     Dado que existe uma árvore cadastrada no sistema com o ID 5
     Quando o usuário envia uma requisição GET para "/arvore/search/5"
     Então o status da resposta deve ser 200
+    E o contrato da resposta deve ser válido para "arvore-schema.json"
 
   Cenário: Buscar uma árvore por um ID inexistente (Caminho de Falha)
     Dado que não existe uma árvore cadastrada no sistema com o ID 999
     Quando o usuário envia uma requisição GET para "/arvore/search/999"
     Então o status da resposta deve ser 404
     E a resposta deve conter a mensagem "Árvore não encontrada"
+    E o contrato da resposta deve ser válido para "mensagem-erro-schema.json"
 
   Cenário: Buscar uma árvore com um ID inválido (Caminho de Falha)
     Dado que o usuário informa um ID inválido, como 0
     Quando o usuário envia uma requisição GET para "/arvore/search/0"
     Então o status da resposta deve ser 400
     E a resposta deve conter a mensagem "Informe um ID válido"
+    E o contrato da resposta deve ser válido para "mensagem-erro-schema.json"

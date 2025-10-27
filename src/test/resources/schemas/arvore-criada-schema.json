@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Schema para criação de árvore com sucesso",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    },
+    "success": {
+      "type": "string",
+      "enum": ["true"]
+    }
+  },
+  "required": ["message", "success"]
+}
