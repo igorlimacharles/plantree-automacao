@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Schema para um Array de Histórico",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "latitude": {
+        "type": "number"
+      },
+      "longitude": {
+        "type": "number"
+      },
+      "raioPlantio": {
+        "type": "number"
+      },
+      "quantidade": {
+        "type": "integer"
+      },
+      "arvoreId": {
+        "type": "string"
+      },
+      "userId": {
+        "type": "string"
+      }
+    },
+    "required": ["id", "latitude", "longitude", "quantidade", "arvoreId", "userId"]
+  }
+}

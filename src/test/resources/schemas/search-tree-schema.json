@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Schema para busca de árvore com sucesso",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "especie": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "data_plantio": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "id",
+    "especie",
+    "latitude",
+    "longitude",
+    "data_plantio"
+  ]
+}

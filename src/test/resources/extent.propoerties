@@ -1,0 +1,6 @@
+extent.reporter.spark.start=true
+extent.reporter.spark.out=target/extent-report/ExtentReport.html
+screenshot.dir=target/extent-report/screenshots/
+screenshot.rel.path=../screenshots/
+systeminfo.Project=Automation
+systeminfo.Author=Igor,Arthur,Pablo
