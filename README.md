@@ -7,7 +7,7 @@ Este projeto contém testes automatizados para teste dos endpoints de Autentica�
 Antes de começar, garanta que você tenha as seguintes ferramentas instaladas:
 
 *   **Java JDK 11** (ou a versão que você usa)
-*   **Apache Maven 3.8+** (ou Gradle)
+*   **Apache Maven 4.0.0** (ou Gradle)
 *   **Docker** (Opcional, se os testes rodam em contêineres)
 *   **Google Chrome** (ou o navegador que seus testes usam)
 
